@@ -1,0 +1,1095 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PSPL — Project Management & Technical Services</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; font-size: 16px; }
+
+:root {
+  --navy:       #0C1A35;
+  --navy-mid:   #132244;
+  --navy-light: #1A3060;
+  --gold:       #B8922A;
+  --gold-mid:   #C9A84C;
+  --gold-pale:  #F5EDD8;
+  --white:      #FFFFFF;
+  --off-white:  #F7F8FA;
+  --gray-100:   #F0F2F5;
+  --gray-200:   #E2E6EC;
+  --gray-400:   #9AAABB;
+  --gray-600:   #5A6B80;
+  --gray-800:   #2D3E52;
+  --text:       #1A2E44;
+  --text-mid:   #4A5E72;
+  --text-soft:  #7A8EA2;
+}
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--white);
+  color: var(--text);
+  overflow-x: hidden;
+}
+
+/* ── NAV ── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+  height: 64px;
+  background: var(--white);
+  border-bottom: 1px solid var(--gray-200);
+  display: flex; align-items: center;
+  padding: 0 6%;
+  gap: 48px;
+}
+.nav-brand {
+  display: flex; align-items: center; gap: 12px;
+  text-decoration: none; flex-shrink: 0;
+}
+.nav-mark {
+  width: 36px; height: 36px;
+  background: var(--navy);
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Playfair Display', serif;
+  font-size: 15px; font-weight: 600; color: var(--gold-mid);
+  letter-spacing: 0.5px;
+}
+.nav-name {
+  font-size: 14px; font-weight: 500; color: var(--navy);
+  letter-spacing: 0.3px; line-height: 1.2;
+}
+.nav-sub {
+  font-size: 10px; font-weight: 300; color: var(--text-soft);
+  letter-spacing: 1px; text-transform: uppercase;
+}
+.nav-links {
+  display: flex; gap: 28px; list-style: none; margin-left: auto;
+}
+.nav-links a {
+  font-size: 13px; font-weight: 400; color: var(--text-mid);
+  text-decoration: none; letter-spacing: 0.2px;
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--navy); }
+.nav-cta {
+  margin-left: 8px;
+  padding: 9px 20px;
+  background: var(--navy); color: var(--white);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px; font-weight: 500; letter-spacing: 0.3px;
+  text-decoration: none; border: none; cursor: pointer;
+  transition: background 0.2s;
+  white-space: nowrap;
+}
+.nav-cta:hover { background: var(--navy-light); }
+
+/* ── HERO ── */
+#hero {
+  padding: 140px 6% 100px;
+  background: var(--white);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+  border-bottom: 1px solid var(--gray-200);
+}
+.hero-left {}
+.hero-label {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-size: 11px; font-weight: 500; letter-spacing: 2.5px;
+  text-transform: uppercase; color: var(--gold);
+  margin-bottom: 24px;
+}
+.hero-label::before {
+  content: ''; display: block;
+  width: 28px; height: 1px; background: var(--gold);
+}
+.hero-h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(38px, 4.5vw, 58px);
+  font-weight: 500; line-height: 1.1;
+  color: var(--navy); margin-bottom: 24px;
+}
+.hero-h1 em { font-style: italic; color: var(--gold); }
+.hero-p {
+  font-size: 16px; font-weight: 300;
+  color: var(--text-mid); line-height: 1.8;
+  max-width: 480px; margin-bottom: 40px;
+}
+.hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+.btn-primary {
+  padding: 13px 28px;
+  background: var(--navy); color: var(--white);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px; font-weight: 500;
+  text-decoration: none; letter-spacing: 0.3px;
+  transition: background 0.2s;
+  display: inline-block;
+}
+.btn-primary:hover { background: var(--navy-light); }
+.btn-outline {
+  padding: 13px 28px;
+  border: 1px solid var(--gray-200); color: var(--text-mid);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px; font-weight: 400;
+  text-decoration: none; letter-spacing: 0.3px;
+  transition: border-color 0.2s, color 0.2s;
+  display: inline-block;
+}
+.btn-outline:hover { border-color: var(--navy); color: var(--navy); }
+.hero-right {}
+.hero-stats {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 1px;
+  background: var(--gray-200);
+  border: 1px solid var(--gray-200);
+}
+.stat-box {
+  background: var(--white);
+  padding: 32px 28px;
+  transition: background 0.2s;
+}
+.stat-box:hover { background: var(--off-white); }
+.stat-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 40px; font-weight: 600;
+  color: var(--navy); line-height: 1;
+  margin-bottom: 8px;
+}
+.stat-num span { font-size: 22px; color: var(--gold); }
+.stat-label {
+  font-size: 12px; font-weight: 400;
+  color: var(--text-soft); line-height: 1.5;
+}
+.hero-tagline {
+  margin-top: 1px;
+  background: var(--navy);
+  padding: 24px 28px;
+  display: flex; align-items: center; gap: 16px;
+}
+.hero-tagline-text {
+  font-family: 'Playfair Display', serif;
+  font-size: 14px; font-style: italic;
+  color: rgba(255,255,255,0.7); line-height: 1.6;
+  flex: 1;
+}
+.hero-tagline-mark {
+  width: 32px; height: 32px; flex-shrink: 0;
+  border: 1px solid rgba(201,168,76,0.4);
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Playfair Display', serif;
+  font-size: 13px; color: var(--gold-mid);
+}
+
+/* ── SHARED SECTION ── */
+.section {
+  padding: 96px 6%;
+  max-width: 1300px;
+  margin: 0 auto;
+}
+.section-full {
+  padding: 96px 6%;
+}
+.section-label {
+  font-size: 11px; font-weight: 500; letter-spacing: 2.5px;
+  text-transform: uppercase; color: var(--gold);
+  display: flex; align-items: center; gap: 10px;
+  margin-bottom: 16px;
+}
+.section-label::before {
+  content: ''; display: block;
+  width: 24px; height: 1px; background: var(--gold);
+}
+.section-h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(28px, 3.2vw, 42px);
+  font-weight: 500; color: var(--navy);
+  line-height: 1.15; margin-bottom: 14px;
+}
+.section-sub {
+  font-size: 15px; font-weight: 300;
+  color: var(--text-mid); line-height: 1.7;
+  max-width: 520px;
+}
+.section-header { margin-bottom: 56px; }
+.divider { height: 1px; background: var(--gray-200); }
+
+/* ── ABOUT ── */
+#about { background: var(--white); }
+.about-grid {
+  display: grid; grid-template-columns: 5fr 4fr; gap: 80px; align-items: start;
+}
+.about-body {
+  font-size: 15px; font-weight: 300;
+  color: var(--text-mid); line-height: 1.9;
+  margin-bottom: 20px;
+}
+.about-highlights { margin-top: 40px; display: flex; flex-direction: column; gap: 0; }
+.about-highlight {
+  display: flex; gap: 20px; align-items: flex-start;
+  padding: 20px 0; border-bottom: 1px solid var(--gray-200);
+}
+.about-highlight:first-child { border-top: 1px solid var(--gray-200); }
+.hl-dot {
+  width: 6px; height: 6px; background: var(--gold);
+  flex-shrink: 0; margin-top: 7px;
+}
+.hl-title { font-size: 14px; font-weight: 500; color: var(--navy); margin-bottom: 4px; }
+.hl-desc { font-size: 13px; color: var(--text-soft); line-height: 1.6; }
+
+.about-aside {}
+.aside-card {
+  background: var(--navy);
+  padding: 40px 36px;
+  margin-bottom: 16px;
+}
+.aside-card-title {
+  font-size: 10px; font-weight: 500; letter-spacing: 2px;
+  text-transform: uppercase; color: var(--gold-mid);
+  margin-bottom: 28px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+.aside-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+.aside-stat-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 32px; font-weight: 600; color: var(--white); line-height: 1;
+  margin-bottom: 6px;
+}
+.aside-stat-num em { font-style: normal; color: var(--gold-mid); font-size: 18px; }
+.aside-stat-label { font-size: 11px; color: rgba(255,255,255,0.45); line-height: 1.5; }
+
+.cities-card {
+  border: 1px solid var(--gray-200);
+  padding: 24px 28px;
+}
+.cities-title {
+  font-size: 10px; font-weight: 500; letter-spacing: 2px;
+  text-transform: uppercase; color: var(--text-soft); margin-bottom: 16px;
+}
+.cities { display: flex; flex-wrap: wrap; gap: 8px; }
+.city {
+  padding: 5px 12px; border: 1px solid var(--gray-200);
+  font-size: 12px; color: var(--text-mid);
+  transition: border-color 0.2s, color 0.2s;
+}
+.city:hover { border-color: var(--gold); color: var(--gold); }
+
+/* ── SERVICES ── */
+#services { background: var(--off-white); }
+.services-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px;
+  background: var(--gray-200);
+  border: 1px solid var(--gray-200);
+}
+.service-card {
+  background: var(--white);
+  padding: 36px 28px;
+  position: relative;
+  transition: background 0.2s;
+}
+.service-card:hover { background: var(--navy); }
+.service-card:hover .svc-num,
+.service-card:hover .svc-name,
+.service-card:hover .svc-desc { color: inherit; }
+.service-card:hover .svc-num { color: rgba(201,168,76,0.6); }
+.service-card:hover .svc-name { color: var(--white); }
+.service-card:hover .svc-desc { color: rgba(255,255,255,0.55); }
+.service-card:hover .svc-bar { background: var(--gold-mid); }
+.svc-bar {
+  width: 28px; height: 2px; background: var(--gold);
+  margin-bottom: 24px; transition: background 0.2s;
+}
+.svc-num {
+  font-size: 11px; font-weight: 400; color: var(--text-soft);
+  letter-spacing: 1px; margin-bottom: 16px;
+  transition: color 0.2s;
+}
+.svc-name {
+  font-size: 15px; font-weight: 500; color: var(--navy);
+  margin-bottom: 12px; line-height: 1.3;
+  transition: color 0.2s;
+}
+.svc-desc {
+  font-size: 13px; font-weight: 300; color: var(--text-soft);
+  line-height: 1.7; transition: color 0.2s;
+}
+
+/* ── SECTORS ── */
+#sectors { background: var(--white); }
+.sectors-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+}
+.sector-card {
+  border: 1px solid var(--gray-200);
+  padding: 40px 32px;
+  position: relative; overflow: hidden;
+  transition: border-color 0.2s;
+}
+.sector-card:hover { border-color: var(--gold); }
+.sector-card:hover .sector-accent { opacity: 1; }
+.sector-accent {
+  position: absolute; top: 0; left: 0; right: 0; height: 2px;
+  background: var(--gold); opacity: 0;
+  transition: opacity 0.2s;
+}
+.sector-n {
+  font-family: 'Playfair Display', serif;
+  font-size: 64px; font-weight: 600;
+  color: var(--gray-100); position: absolute;
+  top: 20px; right: 24px; line-height: 1; pointer-events: none;
+}
+.sector-tag {
+  display: inline-block; padding: 4px 10px;
+  border: 1px solid var(--gray-200);
+  font-size: 10px; font-weight: 500; color: var(--text-soft);
+  letter-spacing: 1.5px; text-transform: uppercase;
+  margin-bottom: 24px;
+}
+.sector-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 22px; font-weight: 500; color: var(--navy);
+  margin-bottom: 14px; line-height: 1.2;
+}
+.sector-desc {
+  font-size: 14px; font-weight: 300; color: var(--text-mid);
+  line-height: 1.8; margin-bottom: 28px;
+}
+.sector-list { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+.sector-list li {
+  font-size: 13px; color: var(--text-mid);
+  padding-left: 14px; position: relative; line-height: 1.5;
+}
+.sector-list li::before {
+  content: '';
+  position: absolute; left: 0; top: 7px;
+  width: 4px; height: 4px;
+  background: var(--gold);
+}
+
+/* ── PROJECTS ── */
+#projects { background: var(--off-white); }
+.projects-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
+}
+.project-card {
+  background: var(--white);
+  border: 1px solid var(--gray-200);
+  padding: 32px 28px;
+  display: flex; flex-direction: column;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.project-card:hover {
+  border-color: rgba(184,146,42,0.4);
+  box-shadow: 0 4px 24px rgba(12,26,53,0.06);
+}
+.proj-tag {
+  display: inline-block; padding: 3px 10px;
+  background: var(--gold-pale);
+  font-size: 10px; font-weight: 500; color: var(--gold);
+  letter-spacing: 1.5px; text-transform: uppercase;
+  margin-bottom: 20px; align-self: flex-start;
+}
+.proj-name {
+  font-size: 16px; font-weight: 500; color: var(--navy);
+  margin-bottom: 6px; line-height: 1.3;
+}
+.proj-client { font-size: 12px; color: var(--gold); margin-bottom: 4px; }
+.proj-scope { font-size: 12px; color: var(--text-soft); margin-bottom: 16px; }
+.proj-line { height: 1px; background: var(--gray-200); margin-bottom: 16px; }
+.proj-detail {
+  font-size: 13px; font-weight: 300; color: var(--text-mid);
+  line-height: 1.7; flex: 1;
+}
+
+/* ── TEAM ── */
+#team { background: var(--white); }
+.team-grid {
+  display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px;
+  background: var(--gray-200);
+  border: 1px solid var(--gray-200);
+}
+.team-card {
+  background: var(--white);
+  padding: 40px 36px;
+  display: flex; gap: 24px; align-items: flex-start;
+  transition: background 0.2s;
+}
+.team-card:hover { background: var(--off-white); }
+.team-avatar {
+  flex-shrink: 0;
+  width: 52px; height: 52px;
+  background: var(--navy);
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Playfair Display', serif;
+  font-size: 18px; font-weight: 600; color: var(--gold-mid);
+}
+.team-body { flex: 1; }
+.team-name {
+  font-size: 17px; font-weight: 500; color: var(--navy);
+  margin-bottom: 4px;
+}
+.team-role { font-size: 12px; color: var(--gold); margin-bottom: 4px; letter-spacing: 0.2px; }
+.team-exp { font-size: 12px; color: var(--text-soft); margin-bottom: 12px; }
+.team-prev {
+  font-size: 12px; color: var(--text-soft); line-height: 1.6;
+  margin-bottom: 16px;
+}
+.team-prev strong { color: var(--text-mid); font-weight: 500; }
+.team-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+.team-tag {
+  padding: 4px 10px;
+  border: 1px solid var(--gray-200);
+  font-size: 11px; color: var(--text-soft);
+  transition: border-color 0.2s, color 0.2s;
+}
+.team-tag:hover { border-color: var(--gold); color: var(--gold); }
+
+/* ── CONTACT ── */
+#contact { background: var(--navy); }
+.contact-wrap {
+  max-width: 1300px; margin: 0 auto;
+  padding: 96px 6%;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start;
+}
+.contact-left {}
+.contact-label {
+  font-size: 11px; font-weight: 500; letter-spacing: 2.5px;
+  text-transform: uppercase; color: var(--gold-mid);
+  display: flex; align-items: center; gap: 10px;
+  margin-bottom: 16px;
+}
+.contact-label::before { content: ''; display: block; width: 24px; height: 1px; background: var(--gold-mid); }
+.contact-h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(30px, 3.5vw, 46px);
+  font-weight: 500; color: var(--white);
+  line-height: 1.1; margin-bottom: 18px;
+}
+.contact-h2 em { font-style: italic; color: var(--gold-mid); }
+.contact-sub {
+  font-size: 15px; font-weight: 300; color: rgba(255,255,255,0.5);
+  line-height: 1.8; margin-bottom: 48px;
+}
+.contact-details { display: flex; flex-direction: column; gap: 20px; }
+.cd-row { display: flex; align-items: flex-start; gap: 16px; }
+.cd-icon {
+  width: 8px; height: 8px; background: var(--gold-mid);
+  flex-shrink: 0; margin-top: 6px;
+}
+.cd-label {
+  font-size: 10px; font-weight: 500; letter-spacing: 1.5px;
+  text-transform: uppercase; color: rgba(255,255,255,0.3);
+  margin-bottom: 4px;
+}
+.cd-value { font-size: 15px; color: rgba(255,255,255,0.8); }
+.cd-value a { color: rgba(255,255,255,0.8); text-decoration: none; transition: color 0.2s; }
+.cd-value a:hover { color: var(--gold-mid); }
+
+.contact-right {}
+.contact-form {
+  background: var(--white);
+  padding: 44px 40px;
+}
+.cf-title {
+  font-size: 16px; font-weight: 500; color: var(--navy);
+  margin-bottom: 32px; padding-bottom: 16px;
+  border-bottom: 1px solid var(--gray-200);
+}
+.cf-row { margin-bottom: 20px; }
+.cf-label {
+  display: block; font-size: 11px; font-weight: 500;
+  letter-spacing: 1px; text-transform: uppercase;
+  color: var(--text-soft); margin-bottom: 8px;
+}
+.cf-input, .cf-select, .cf-textarea {
+  width: 100%; padding: 11px 14px;
+  border: 1px solid var(--gray-200); background: var(--white);
+  font-family: 'DM Sans', sans-serif; font-size: 14px; color: var(--text);
+  outline: none; transition: border-color 0.2s;
+  appearance: none;
+}
+.cf-input:focus, .cf-select:focus, .cf-textarea:focus { border-color: var(--navy); }
+.cf-textarea { resize: vertical; min-height: 96px; }
+.cf-row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.cf-submit {
+  width: 100%; padding: 13px;
+  background: var(--navy); color: var(--white);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px; font-weight: 500; letter-spacing: 0.3px;
+  border: none; cursor: pointer;
+  transition: background 0.2s;
+  margin-top: 8px;
+}
+.cf-submit:hover { background: var(--navy-light); }
+
+/* ── FOOTER ── */
+footer {
+  background: var(--navy-mid);
+  border-top: 1px solid rgba(255,255,255,0.06);
+  padding: 28px 6%;
+  display: flex; align-items: center; justify-content: space-between;
+  flex-wrap: wrap; gap: 16px;
+}
+.footer-brand { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+.footer-mark {
+  width: 28px; height: 28px; background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(201,168,76,0.3);
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Playfair Display', serif;
+  font-size: 12px; color: var(--gold-mid);
+}
+.footer-copy { font-size: 12px; color: rgba(255,255,255,0.3); }
+.footer-links { display: flex; gap: 24px; }
+.footer-links a { font-size: 12px; color: rgba(255,255,255,0.35); text-decoration: none; transition: color 0.2s; }
+.footer-links a:hover { color: var(--gold-mid); }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 1024px) {
+  .services-grid { grid-template-columns: repeat(2, 1fr); }
+  .about-grid { grid-template-columns: 1fr; gap: 48px; }
+}
+@media (max-width: 860px) {
+  #hero { grid-template-columns: 1fr; gap: 48px; padding: 100px 6% 72px; }
+  .sectors-grid, .projects-grid { grid-template-columns: 1fr 1fr; }
+  .team-grid { grid-template-columns: 1fr; }
+  .contact-wrap { grid-template-columns: 1fr; gap: 48px; }
+  .nav-links { display: none; }
+}
+@media (max-width: 600px) {
+  .sectors-grid, .projects-grid { grid-template-columns: 1fr; }
+  .services-grid { grid-template-columns: 1fr; }
+  .cf-row-2 { grid-template-columns: 1fr; }
+  .hero-stats { grid-template-columns: 1fr 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#hero" class="nav-brand">
+    <div class="nav-mark">PS</div>
+    <div>
+      <div class="nav-name">PSPL</div>
+      <div class="nav-sub">ProHLP Solutions</div>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#team">Team</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">Get In Touch</a>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-left">
+    <div class="hero-label">ProHLP Solutions Pvt. Ltd.</div>
+    <h1 class="hero-h1">Project Management<br>&amp; <em>Technical Services</em></h1>
+    <p class="hero-p">A specialist consultancy delivering measurable value across hospitality, commercial and residential developments — from feasibility to handover.</p>
+    <div class="hero-actions">
+      <a href="#services" class="btn-primary">Our Services</a>
+      <a href="#contact" class="btn-outline">Speak to Us</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-stats">
+      <div class="stat-box">
+        <div class="stat-num">30<span>+</span></div>
+        <div class="stat-label">Years combined leadership experience</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num">100<span>+</span></div>
+        <div class="stat-label">Projects delivered across India</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num">18<span>+</span></div>
+        <div class="stat-label">Hotel projects managed end-to-end</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num">₹500<span>Cr+</span></div>
+        <div class="stat-label">Project value overseen</div>
+      </div>
+    </div>
+    <div class="hero-tagline">
+      <div class="hero-tagline-text">"Integrated approach substantiated by Technology &amp; AI will work wonders for Projects"</div>
+      <div class="hero-tagline-mark">SS</div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section">
+    <div class="section-header">
+      <div class="section-label">Who We Are</div>
+      <h2 class="section-h2">About ProHLP Solutions</h2>
+      <p class="section-sub">A specialist Project Management &amp; Technical Services company with three decades of combined senior experience.</p>
+    </div>
+    <div class="about-grid">
+      <div>
+        <p class="about-body">PSPL partners with investors, developers, and hospitality groups to de-risk projects, optimise costs, and deliver world-class built environments on time and within budget. Our senior team has operated at leadership level within multinationals including Oberoi Hotels, AccorHotels, JLL, InterGlobe, Bovis Lend Lease, and SEMBCORP.</p>
+        <p class="about-body">We bring depth across three key verticals — Hospitality, Commercial, and Residential — with an integrated team covering project management, MEP, green building, and technical services under one roof.</p>
+        <div class="about-highlights">
+          <div class="about-highlight">
+            <div class="hl-dot"></div>
+            <div>
+              <div class="hl-title">Single-Window Consultancy</div>
+              <div class="hl-desc">Feasibility through handover — design, cost, quality, MEP and sustainability managed cohesively without coordination gaps.</div>
+            </div>
+          </div>
+          <div class="about-highlight">
+            <div class="hl-dot"></div>
+            <div>
+              <div class="hl-title">Sector-Specific Depth</div>
+              <div class="hl-desc">Focused exclusively on hospitality, commercial and residential — not generalist advisory. We understand the standards, operators and compliance requirements that define each sector.</div>
+            </div>
+          </div>
+          <div class="about-highlight">
+            <div class="hl-dot"></div>
+            <div>
+              <div class="hl-title">Technology-Augmented Delivery</div>
+              <div class="hl-desc">AI-enhanced project monitoring, BIM coordination and digital reporting for real-time intelligence and proactive decision-making on every project.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="about-aside">
+        <div class="aside-card">
+          <div class="aside-card-title">Track Record at a Glance</div>
+          <div class="aside-stats">
+            <div>
+              <div class="aside-stat-num">30<em>+</em></div>
+              <div class="aside-stat-label">Years combined experience</div>
+            </div>
+            <div>
+              <div class="aside-stat-num">100<em>+</em></div>
+              <div class="aside-stat-label">Projects delivered</div>
+            </div>
+            <div>
+              <div class="aside-stat-num">18<em>+</em></div>
+              <div class="aside-stat-label">Hotel projects managed</div>
+            </div>
+            <div>
+              <div class="aside-stat-num">500<em>+</em></div>
+              <div class="aside-stat-label">Green building assessments</div>
+            </div>
+          </div>
+        </div>
+        <div class="cities-card">
+          <div class="cities-title">Operating Across India</div>
+          <div class="cities">
+            <div class="city">Delhi NCR</div>
+            <div class="city">Mumbai</div>
+            <div class="city">Pune</div>
+            <div class="city">Bengaluru</div>
+            <div class="city">Goa</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- SERVICES -->
+<section id="services" style="background:var(--off-white)">
+  <div class="section">
+    <div class="section-header">
+      <div class="section-label">What We Do</div>
+      <h2 class="section-h2">Service Offerings</h2>
+      <p class="section-sub">End-to-end project management and technical consultancy across the full development lifecycle.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="svc-bar"></div>
+        <div class="svc-num">01</div>
+        <div class="svc-name">Feasibility Studies</div>
+        <div class="svc-desc">Market &amp; financial feasibility, operator selection, concept brief, site assessment and ROI modelling for new developments.</div>
+      </div>
+      <div class="service-card">
+        <div class="svc-bar"></div>
+        <div class="svc-num">02</div>
+        <div class="svc-name">Due Diligence</div>
+        <div class="svc-desc">Technical due diligence for acquisitions, operator mandates, legal &amp; regulatory compliance and asset condition assessments.</div>
+      </div>
+      <div class="service-card">
+        <div class="svc-bar"></div>
+        <div class="svc-num">03</div>
+        <div class="svc-name">Design Review</div>
+        <div class="svc-desc">Design management, value engineering, drawing review, constructability assessments and operator brand compliance checks.</div>
+      </div>
+      <div class="service-card">
+        <div class="svc-bar"></div>
+        <div class="svc-num">04</div>
+        <div class="svc-name">Cost Optimisation</div>
+        <div class="svc-desc">Zero-based budgeting, cost-to-complete analysis, procurement strategy and systematic value engineering solutions.</div>
+      </div>
+      <div class="service-card">
+        <div class="svc-bar"></div>
+        <div class="svc-num">05</div>
+        <div class="svc-name">Quality &amp; HSE Audits</div>
+        <div class="svc-desc">Site inspections, QA/QC plans, HSE compliance, IFC standards alignment and statutory safety management.</div>
+      </div>
+      <div class="service-card">
+        <div class="svc-bar"></div>
+        <div class="svc-num">06</div>
+        <div class="svc-name">MEP Services Audit</div>
+        <div class="svc-desc">MEP design review, systems audit, energy benchmarking, HVAC, plumbing and electrical oversight across all asset classes.</div>
+      </div>
+      <div class="service-card">
+        <div class="svc-bar"></div>
+        <div class="svc-num">07</div>
+        <div class="svc-name">Project Audits</div>
+        <div class="svc-desc">Quarterly health checks, progress reporting, risk registers, and independent time &amp; cost tracking for project governance.</div>
+      </div>
+      <div class="service-card">
+        <div class="svc-bar"></div>
+        <div class="svc-num">08</div>
+        <div class="svc-name">Green Building</div>
+        <div class="svc-desc">LEED, IGBC, GRIHA &amp; GEM certification, whole building energy simulation and sustainability audit services.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- SECTORS within Services -->
+<section id="sectors">
+  <div class="section">
+    <div class="section-header">
+      <div class="section-label">Where We Work</div>
+      <h2 class="section-h2">Sector Expertise</h2>
+      <p class="section-sub">Deep domain knowledge across three core development verticals.</p>
+    </div>
+    <div class="sectors-grid">
+      <div class="sector-card">
+        <div class="sector-accent"></div>
+        <div class="sector-n">01</div>
+        <div class="sector-tag">Hospitality</div>
+        <div class="sector-name">Hotels &amp; Resorts</div>
+        <div class="sector-desc">Budget properties through 5-star luxury resorts — operator selection, brand compliance, and end-to-end technical delivery.</div>
+        <ul class="sector-list">
+          <li>5-star, 4-star, mid-market &amp; budget hotels</li>
+          <li>New builds, renovations &amp; repositioning</li>
+          <li>Operator brand compliance &amp; FF&amp;E</li>
+          <li>Pre-opening MEP commissioning</li>
+          <li>Feasibility for 30+ hotel projects</li>
+        </ul>
+      </div>
+      <div class="sector-card">
+        <div class="sector-accent"></div>
+        <div class="sector-n">02</div>
+        <div class="sector-tag">Commercial</div>
+        <div class="sector-name">Commercial Developments</div>
+        <div class="sector-desc">Grade A offices, IT parks, retail and mixed-use developments ensuring technical excellence and long-term performance.</div>
+        <ul class="sector-list">
+          <li>IT parks, office campuses &amp; SEZs</li>
+          <li>Retail &amp; mixed-use developments</li>
+          <li>BMS, MEP &amp; smart building systems</li>
+          <li>LEED / IGBC green certifications</li>
+          <li>Tenant fit-out &amp; design coordination</li>
+        </ul>
+      </div>
+      <div class="sector-card">
+        <div class="sector-accent"></div>
+        <div class="sector-n">03</div>
+        <div class="sector-tag">Residential</div>
+        <div class="sector-name">Residential Projects</div>
+        <div class="sector-desc">Premium villas, luxury wellness resorts and townships where quality governance and cost benchmarking are critical.</div>
+        <ul class="sector-list">
+          <li>Premium villas, resorts &amp; townships</li>
+          <li>Luxury wellness resort developments</li>
+          <li>Structural, MEP &amp; landscape works</li>
+          <li>Quality audits &amp; project governance</li>
+          <li>Cost benchmarking &amp; value engineering</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- PROJECTS -->
+<section id="projects" style="background:var(--off-white)">
+  <div class="section">
+    <div class="section-header">
+      <div class="section-label">Our Work</div>
+      <h2 class="section-h2">Select Key Projects</h2>
+      <p class="section-sub">A consistent record of delivering complex, high-value developments across India.</p>
+    </div>
+    <div class="projects-grid">
+      <div class="project-card">
+        <div class="proj-tag">Hospitality</div>
+        <div class="proj-name">IBIS Hotels Portfolio</div>
+        <div class="proj-client">AccorHotels / InterGlobe</div>
+        <div class="proj-scope">Delhi Aerocity (445 rooms) · Jaipur · Nashik · Navi Mumbai</div>
+        <div class="proj-line"></div>
+        <div class="proj-detail">End-to-end MEP procurement &amp; execution across 18+ hotels. Led 4 fully owned project executions. Flagship Aerocity delivered under tight timelines to international brand standards.</div>
+      </div>
+      <div class="project-card">
+        <div class="proj-tag">Commercial</div>
+        <div class="proj-name">IndiGo I-FLY Training Center</div>
+        <div class="proj-client">IndiGo Airlines</div>
+        <div class="proj-scope">Gurgaon · 65,000 sq.ft · ~₹45 Crore</div>
+        <div class="proj-line"></div>
+        <div class="proj-detail">Aviation training facility with fully integrated MEP systems. High-specification interiors, technical infrastructure and full operational readiness delivered on schedule.</div>
+      </div>
+      <div class="project-card">
+        <div class="proj-tag">Luxury</div>
+        <div class="proj-name">Ananda in the Himalayas</div>
+        <div class="proj-client">Luxury Wellness Resort · Uttarakhand</div>
+        <div class="proj-scope">Premium Tier · Luxury Resort Development</div>
+        <div class="proj-line"></div>
+        <div class="proj-detail">MEP systems designed and overseen to the highest luxury hospitality standards. Environmental sensitivity and guest experience central to all technical decisions.</div>
+      </div>
+      <div class="project-card">
+        <div class="proj-tag">Commercial</div>
+        <div class="proj-name">RMZ Millennia IT Park</div>
+        <div class="proj-client">RMZ Corp · Chennai</div>
+        <div class="proj-scope">Large-Scale IT Campus · Grade A</div>
+        <div class="proj-line"></div>
+        <div class="proj-detail">MEP design review, tendering and procurement management. Fully aligned with global corporate tenant requirements and international engineering standards.</div>
+      </div>
+      <div class="project-card">
+        <div class="proj-tag">Institutional</div>
+        <div class="proj-name">Bank Administrative Block</div>
+        <div class="proj-client">Government Bank · Varanasi</div>
+        <div class="proj-scope">80,000 sq.ft. Administrative Complex</div>
+        <div class="proj-line"></div>
+        <div class="proj-detail">Complex delivered on cost with significant savings through value engineering and design rationalisation. Full compliance with local regulations and statutory requirements.</div>
+      </div>
+      <div class="project-card">
+        <div class="proj-tag">Feasibility</div>
+        <div class="proj-name">Luxury Resort, Jaipur</div>
+        <div class="proj-client">Private Developer</div>
+        <div class="proj-scope">4-acre · 36 Villas + 16 Rooms · Banquet &amp; Pool</div>
+        <div class="proj-line"></div>
+        <div class="proj-detail">End-to-end technical feasibility assessment including market analysis, concept positioning and complete financial modelling for a premium destination resort.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- TEAM -->
+<section id="team">
+  <div class="section">
+    <div class="section-header">
+      <div class="section-label">Our People</div>
+      <h2 class="section-h2">Leadership Team</h2>
+      <p class="section-sub">Senior professionals with decades of hands-on experience in their respective domains.</p>
+    </div>
+    <div class="team-grid">
+      <div class="team-card">
+        <div class="team-avatar">SS</div>
+        <div class="team-body">
+          <div class="team-name">Samjith Singh</div>
+          <div class="team-role">Director — Project Management Services</div>
+          <div class="team-exp">30+ years · BE Electrical, Bangalore University</div>
+          <div class="team-prev"><strong>Previously at:</strong> Oberoi Hotels · JLL · AccorHotels · InterGlobe · Bovis Lend Lease · SEMBCORP</div>
+          <div class="team-tags">
+            <span class="team-tag">MEP Design &amp; Execution</span>
+            <span class="team-tag">Hospitality Projects</span>
+            <span class="team-tag">Cost Optimisation</span>
+            <span class="team-tag">QA &amp; Compliance</span>
+          </div>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="team-avatar">SN</div>
+        <div class="team-body">
+          <div class="team-name">Shreenivas Saathe</div>
+          <div class="team-role">Technical Services — MEP Expert</div>
+          <div class="team-exp">27 years · BE Electrical, Pune University</div>
+          <div class="team-prev"><strong>Previously at:</strong> AECOM · Taj Hotels · Tata Consulting Engineers · IOCL · Cadbury · Ranbaxy · Voltas</div>
+          <div class="team-tags">
+            <span class="team-tag">MEP Design Management</span>
+            <span class="team-tag">Electrical Systems</span>
+            <span class="team-tag">Hotels &amp; Commercial</span>
+          </div>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="team-avatar">JV</div>
+        <div class="team-body">
+          <div class="team-name">Jayesh Vira</div>
+          <div class="team-role">Green Building Expert &amp; Energy Auditor</div>
+          <div class="team-exp">17+ years · BE Electrical + MBA, Mumbai University</div>
+          <div class="team-prev"><strong>Previously at:</strong> Godrej (10 years) · 35+ Green Building Certified Projects · IGBC / LEED / GRIHA</div>
+          <div class="team-tags">
+            <span class="team-tag">IGBC / LEED / GRIHA</span>
+            <span class="team-tag">Energy Simulation</span>
+            <span class="team-tag">Sustainability Audits</span>
+          </div>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="team-avatar">AS</div>
+        <div class="team-body">
+          <div class="team-name">Anjana Sri</div>
+          <div class="team-role">Green Building Architect</div>
+          <div class="team-exp">12+ years · B.Arch + M.Arch · LEED, IGBC, GRIHA, GEM Certified</div>
+          <div class="team-prev"><strong>Previously at:</strong> CII-IGBC (6+ years) · 500+ Project Assessments · 200+ Physical Audits</div>
+          <div class="team-tags">
+            <span class="team-tag">Green Architecture</span>
+            <span class="team-tag">Certification Expert</span>
+            <span class="team-tag">Technical Training</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-wrap">
+    <div class="contact-left">
+      <div class="contact-label">Get In Touch</div>
+      <h2 class="contact-h2">Let's Build<br>Something <em>Exceptional</em></h2>
+      <p class="contact-sub">We'd welcome the opportunity to discuss how PSPL can add measurable value to your next development. Reach out for a no-obligation conversation.</p>
+      <div class="contact-details">
+        <div class="cd-row">
+          <div class="cd-icon"></div>
+          <div>
+            <div class="cd-label">Company</div>
+            <div class="cd-value">ProHLP Solutions Pvt. Ltd.</div>
+          </div>
+        </div>
+        <div class="cd-row">
+          <div class="cd-icon"></div>
+          <div>
+            <div class="cd-label">Phone</div>
+            <div class="cd-value"><a href="tel:+919711733295">+91 97117 33295</a></div>
+          </div>
+        </div>
+        <div class="cd-row">
+          <div class="cd-icon"></div>
+          <div>
+            <div class="cd-label">Email</div>
+            <div class="cd-value"><a href="mailto:samjith.singh@gmail.com">samjith.singh@gmail.com</a></div>
+          </div>
+        </div>
+        <div class="cd-row">
+          <div class="cd-icon"></div>
+          <div>
+            <div class="cd-label">Website</div>
+            <div class="cd-value"><a href="http://www.prohlpsolutions.in" target="_blank">www.prohlpsolutions.in</a></div>
+          </div>
+        </div>
+        <div class="cd-row">
+          <div class="cd-icon"></div>
+          <div>
+            <div class="cd-label">Head Office</div>
+            <div class="cd-value">04 Peach Tree Complex, Gurgaon, Delhi NCR</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="contact-right">
+      <div class="contact-form">
+        <div class="cf-title">Send an Enquiry</div>
+        <div class="cf-row-2">
+          <div class="cf-row">
+            <label class="cf-label" for="cf-name">Name</label>
+            <input class="cf-input" type="text" id="cf-name" placeholder="Your full name">
+          </div>
+          <div class="cf-row">
+            <label class="cf-label" for="cf-company">Company</label>
+            <input class="cf-input" type="text" id="cf-company" placeholder="Organisation">
+          </div>
+        </div>
+        <div class="cf-row">
+          <label class="cf-label" for="cf-email">Email Address</label>
+          <input class="cf-input" type="email" id="cf-email" placeholder="your@email.com">
+        </div>
+        <div class="cf-row">
+          <label class="cf-label" for="cf-service">Service of Interest</label>
+          <select class="cf-select" id="cf-service">
+            <option value="">Select a service...</option>
+            <option>Feasibility Study</option>
+            <option>Technical Due Diligence</option>
+            <option>Design Review</option>
+            <option>Cost Optimisation</option>
+            <option>Quality &amp; HSE Audit</option>
+            <option>MEP Services Audit</option>
+            <option>Project Audit</option>
+            <option>Green Building Certification</option>
+            <option>Full Project Management</option>
+          </select>
+        </div>
+        <div class="cf-row">
+          <label class="cf-label" for="cf-message">Message</label>
+          <textarea class="cf-textarea" id="cf-message" placeholder="Tell us about your project..."></textarea>
+        </div>
+        <button class="cf-submit" onclick="submitEnquiry()">Send Enquiry &rarr;</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">
+    <div class="footer-mark">PS</div>
+    <span style="font-size:13px;color:rgba(255,255,255,0.4)">ProHLP Solutions Pvt. Ltd.</span>
+  </div>
+  <span class="footer-copy">© 2026 PSPL · Innovative · Responsive · Diligent · Committed</span>
+  <div class="footer-links">
+    <a href="#about">About</a>
+    <a href="#services">Services</a>
+    <a href="#projects">Projects</a>
+    <a href="#team">Team</a>
+    <a href="#contact">Contact</a>
+  </div>
+</footer>
+
+<script>
+  // Active nav link on scroll
+  const sections = document.querySelectorAll('section[id]');
+  const links = document.querySelectorAll('.nav-links a');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(s => {
+      if (window.scrollY >= s.offsetTop - 80) current = s.id;
+    });
+    links.forEach(a => {
+      const active = a.getAttribute('href') === '#' + current;
+      a.style.color = active ? 'var(--navy)' : '';
+      a.style.fontWeight = active ? '500' : '';
+    });
+  }, { passive: true });
+
+  // Form submit — opens mailto
+  function submitEnquiry() {
+    const name    = document.getElementById('cf-name').value.trim();
+    const email   = document.getElementById('cf-email').value.trim();
+    const company = document.getElementById('cf-company').value.trim();
+    const service = document.getElementById('cf-service').value;
+    const message = document.getElementById('cf-message').value.trim();
+    if (!name || !email) { alert('Please enter your name and email address.'); return; }
+    const subject = encodeURIComponent('Project Enquiry — PSPL' + (service ? ': ' + service : ''));
+    const body = encodeURIComponent(
+      'Name: ' + name + '\n' +
+      'Email: ' + email + '\n' +
+      (company ? 'Company: ' + company + '\n' : '') +
+      (service ? 'Service: ' + service + '\n' : '') +
+      (message ? '\nMessage:\n' + message : '')
+    );
+    window.location.href = 'mailto:samjith.singh@gmail.com?subject=' + subject + '&body=' + body;
+  }
+</script>
+</body>
+</html>
